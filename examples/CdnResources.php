@@ -12,7 +12,7 @@ $client->cdnResource->create(array(
     'label' => 'Testing', // required / Your own label of a CDN Resource.
     'type' => 'standard', // required / Valid values: 'standard' | 'video'
     'origin_scheme' => 'https', // URL scheme of the Origin. Valid values: 'http' | 'https'
-    'origin_url' => 'cimpta.com', // URL of your content source (Origin). Doesn't have to be set when CDN Storage Id is set (that means instead of using your own URL you use our CDN Storage).
+    'origin_url' => 'example.com', // URL of your content source (Origin). Doesn't have to be set when CDN Storage Id is set (that means instead of using your own URL you use our CDN Storage).
 ));
 
 // Edit resource
