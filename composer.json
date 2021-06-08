@@ -1,0 +1,24 @@
+{
+    "name": "mafikes/cdn77api",
+    "description": "API client for CDN77.com",
+    "type": "library",
+    "require": {
+        "php": ">=5.4.0",
+        "ext-json": "*",
+        "guzzlehttp/guzzle": "^6.3"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Martin Antoš",
+            "email": "mafikes@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Mafikes\\Cdn77Api\\": "src/"
+        }
+    },
+    "require-dev": {
+    }
+}
