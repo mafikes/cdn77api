@@ -1,6 +1,6 @@
 Library mafikes/cdn77api
 ------------
-PHP Client for communication with [CDN77](https://client.cdn77.com/support/api-docs/v2/account).
+PHP Client for communication with [cdn77.com](https://client.cdn77.com/support/api-docs/v2/account).
 
 Install
 ------------
@@ -171,4 +171,4 @@ $client->storage->getLocationsList();
 
 ---
 
-I hope this package help you. You can donate me on PayPal: mafikes@gmail.com
+I hope this package help you. You could donate me via PayPal: mafikes@gmail.com
