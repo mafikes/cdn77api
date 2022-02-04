@@ -20,12 +20,39 @@ class RawLogsResource implements RawLogsResourceInterface
     }
 
     /**
+     * List of CDN Resource Raw Logs
      * @return mixed|string
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function getFiles()
+    public function getList()
     {
-        return $this->client->askServer('GET', 'raw-logs/get-files');
+        return $this->client->askServer('GET', 'raw-logs');
+    }
+
+    /**
+     * Activate Raw Logs for CDN Resource
+     * @param $cdnId
+     * @return mixed|string
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function activateRawLog($cdnId)
+    {
+        return $this->client->askServer('POST', 'raw-logs/activate', null, array(
+            'cdn_id' => $cdnId
+        ));
+    }
+
+    /**
+     * Deactivate Raw Logs for CDN Resource
+     * @param $cdnId
+     * @return mixed|string
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function deactivateRawLog($cdnId)
+    {
+        return $this->client->askServer('POST', 'raw-logs/deactivate', null, array(
+            'cdn_id' => $cdnId
+        ));
     }
 
     /**
@@ -36,7 +63,7 @@ class RawLogsResource implements RawLogsResourceInterface
      */
     public function download($cdnResourceId, $fileName)
     {
-        return $this->client->askServer('GET', 'raw-logs/get-files', array(
+        return $this->client->askServer('GET', 'raw-logs/download', array(
             'cdn_id' => $cdnResourceId,
             'file_name' => $fileName
         ));

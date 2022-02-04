@@ -3,7 +3,7 @@
     "description": "API client for CDN77.com",
     "type": "library",
     "require": {
-        "php": ">=5.4.0",
+        "php": ">=7.0",
         "ext-json": "*",
         "guzzlehttp/guzzle": "^6.3"
     },
