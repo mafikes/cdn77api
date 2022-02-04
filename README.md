@@ -1,4 +1,4 @@
-PHP Library  for cdn77 api v3
+PHP Library cdn77 api v3
 ------------
 PHP Client for communication with v3 [cdn77.com](https://client.cdn77.com/support/api-docs/v3/introduction).
 
