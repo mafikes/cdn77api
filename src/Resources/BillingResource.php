@@ -26,7 +26,7 @@ class BillingResource implements BillingInterface
      */
     public function getDetails()
     {
-        return $this->client->askServer('GET','billing-overview/details');
+        return $this->client->askServer('GET','credit-balance');
     }
 }
 

@@ -27,7 +27,31 @@ class CdnResource implements CdnResourceInterface
      */
     public function create($data = array())
     {
-        return $this->client->askServer('POST', 'cdn-resource/create', null, $data);
+        return $this->client->askServer('POST', 'cdn', null, $data);
+    }
+
+    /**
+     * Add CNAME
+     * @param $cdnResourceId
+     * @param $data
+     * @return mixed|string
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function createCname($cdnResourceId, $data = array())
+    {
+        return $this->client->askServer('POST', 'cdn/'.$cdnResourceId.'/cname', null, $data);
+    }
+
+    /**
+     * Enable Datacenters
+     * @param $cdnResourceId
+     * @param $data
+     * @return mixed|string
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function enableDatacenters($cdnResourceId, $data)
+    {
+        return $this->client->askServer('PUT', 'cdn/'.$cdnResourceId.'/datacenters', null, $data);
     }
 
     /**
@@ -38,9 +62,7 @@ class CdnResource implements CdnResourceInterface
      */
     public function getDetail($cdnResourceId)
     {
-        return $this->client->askServer('GET', 'cdn-resource/details', array(
-            'id' => $cdnResourceId
-        ));
+        return $this->client->askServer('GET', 'cdn/'.$cdnResourceId);
     }
 
     /**
@@ -52,8 +74,7 @@ class CdnResource implements CdnResourceInterface
      */
     public function edit($cdnResourceId, $data = array())
     {
-        $data['id'] = (int)$cdnResourceId;
-        return $this->client->askServer('POST', 'cdn-resource/edit', null, $data);
+        return $this->client->askServer('PATCH', 'cdn/'.$cdnResourceId);
     }
 
     /**
@@ -64,8 +85,7 @@ class CdnResource implements CdnResourceInterface
      */
     public function delete($cdnResourceId)
     {
-        $data['id'] = (int)$cdnResourceId;
-        return $this->client->askServer('POST', 'cdn-resource/delete', null, $data);
+        return $this->client->askServer('DELETE', 'cdn/'.$cdnResourceId);
     }
 
     /**
@@ -74,7 +94,29 @@ class CdnResource implements CdnResourceInterface
      */
     public function getList()
     {
-        return $this->client->askServer('GET','cdn-resource/list');
+        return $this->client->askServer('GET','cdn');
+    }
+
+    /**
+     * List of CNAMEs
+     * @param $cdnResourceId
+     * @return mixed|string
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function getListCnames($cdnResourceId)
+    {
+        return $this->client->askServer('GET','cdn/'.$cdnResourceId.'/cname');
+    }
+
+    /**
+     * List of Datacenters
+     * @param $cdnResourceId
+     * @return mixed|string
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function getListDatacenter($cdnResourceId)
+    {
+        return $this->client->askServer('GET','cdn/'.$cdnResourceId.'/datacenters');
     }
 }
 

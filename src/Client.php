@@ -12,10 +12,8 @@ use Mafikes\Cdn77Api\Resources;
  */
 class Client
 {
-    const API_URL = 'https://api.cdn77.com/v2.0/';
-
-    private $login; // Login email
-    private $token; // Api Key from administration
+    const API_URL = 'https://api.cdn77.com/v3/';
+    private $token; // Generated Api Key
 
     private $client; // Registered Guzzle client
 
@@ -25,20 +23,17 @@ class Client
     /** @var Resources\BillingResource */
     public $billing;
 
-    /** @var Resources\ProfileResource */
-    public $profile;
-
-    /** @var Resources\DataManagementResource */
-    public $dataManagement;
-
-    /** @var Resources\DataQueueResource */
-    public $dataQueue;
-
     /** @var Resources\RawLogsResource */
     public $rawLogs;
 
-    /** @var Resources\ReportResource */
-    public $report;
+    /** @var Resources\StatsResource */
+    public $stats;
+
+    /** @var Resources\JobResource */
+    public $job;
+
+    /** @var Resources\OriginResource */
+    public $origin;
 
     /** @var Resources\StorageResource */
     public $storage;
@@ -47,17 +42,14 @@ class Client
     private $jsonResponse;
 
     /**
-     * Client constructor.
-     * @param $login
      * @param $token
-     * @param false $jsonResponse
+     * @param $jsonResponse
      * @throws \Exception
      */
-    public function __construct($login, $token, $jsonResponse = false)
+    public function __construct($token, $jsonResponse = false)
     {
-        if (is_string($token) || is_string($login)) {
+        if (is_string($token)) {
             $this->token = $token;
-            $this->login = $login;
         } else {
             throw new \Exception('Cdn77Api client Class is not specify right (login or apiKey must be defined as string).');
         }
@@ -70,12 +62,11 @@ class Client
         $this->jsonResponse = $jsonResponse;
         $this->cdnResource = new Resources\CdnResource($this);
         $this->billing = new Resources\BillingResource($this);
-        $this->profile = new Resources\ProfileResource($this);
-        $this->dataManagement = new Resources\DataManagementResource($this);
-        $this->dataQueue = new Resources\DataQueueResource($this);
+        $this->job = new Resources\JobResource($this);
         $this->rawLogs = new Resources\RawLogsResource($this);
-        $this->report = new Resources\ReportResource($this);
+        $this->stats = new Resources\StatsResource($this);
         $this->storage = new Resources\StorageResource($this);
+        $this->origin = new Resources\OriginResource($this);
     }
 
     /**
@@ -86,6 +77,7 @@ class Client
     {
         $header = array(
             'headers' => array(
+                'Authorization' => 'Bearer '.$this->token
             )
         );
 
