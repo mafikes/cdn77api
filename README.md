@@ -33,6 +33,7 @@ Functions in client are similar to original functions from API CDN77. [Go to off
 - [Jobs](#jobs)
 - [Raw Logs](#raw-logs)
 - [Statistics](#statistics) (All functions not implemented yet)
+- [Storage Location](#storage-location)
 
 ### CDN Resources
 [Official documentation of cdn resources](https://client.cdn77.com/support/api-docs/v3/cdn-resources)
