@@ -56,7 +56,7 @@ class Client
 
         $this->client = new GuzzleHttp\Client([
             'base_uri' => self::API_URL,
-            'timeout' => 0,
+            'timeout' => 2.0,
         ]);
 
         $this->jsonResponse = $jsonResponse;
@@ -82,7 +82,7 @@ class Client
         );
 
         if (count($bodyData) > 0) {
-            $header['form_params'] = $bodyData;
+            $header['json'] = $bodyData;
         }
 
         return $header;
@@ -101,13 +101,8 @@ class Client
     {
         // Add params if exist
         if(!is_null($parameters)) {
-            $parameters['login'] = $this->login;
-            $parameters['passwd'] = $this->token;
             $uri = $uri . '?' . http_build_query($parameters);
-        } else if(count($bodyData) > 0){
-            $bodyData['login'] = $this->login;
-            $bodyData['passwd'] = $this->token;
-        }
+        } 
 
         // Create request
         try {
@@ -117,7 +112,7 @@ class Client
         }
 
         // Catch Error code from header
-        if (!in_array($response->getStatusCode(), array(200, 201)) || is_null($response->getStatusCode())) {
+        if (!in_array($response->getStatusCode(), array(200, 201, 202)) || is_null($response->getStatusCode())) {
             throw new \Exception('Exception: Request Error. Status: ' . $response->getStatusCode() . ' Body: ' . $response->getBody());
         }
 
