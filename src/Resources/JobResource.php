@@ -22,13 +22,12 @@ class JobResource implements JobInterface
         $this->client = $client;
     }
 
-
     /**
      * Returns a filtered list of jobs for a given CDN Resource and type.
      * @param $id
      * @param $type
      * @return mixed|string
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Exception
      */
     public function getList($id, $type)
     {
@@ -40,7 +39,7 @@ class JobResource implements JobInterface
      * @param $id
      * @param $jobId
      * @return mixed|string
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Exception
      */
     public function getDetail($id, $jobId)
     {
@@ -52,7 +51,7 @@ class JobResource implements JobInterface
      * @param $id
      * @param $data
      * @return mixed|string
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Exception
      */
     public function prefetch($id, $data)
     {
@@ -64,7 +63,7 @@ class JobResource implements JobInterface
      * @param $id
      * @param $data
      * @return mixed|string
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Exception
      */
     public function purge($id, $data)
     {
@@ -75,7 +74,7 @@ class JobResource implements JobInterface
      * Allows you to instantly remove all cached content from all datacenters.
      * @param $id
      * @return mixed|string
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Exception
      */
     public function purgeAll($id)
     {

@@ -23,7 +23,7 @@ class CdnResource implements CdnResourceInterface
      * Create a HTTP CDN resource.
      * @param array $data
      * @return mixed|string
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Exception
      */
     public function create($data = array())
     {
@@ -35,7 +35,7 @@ class CdnResource implements CdnResourceInterface
      * @param $cdnResourceId
      * @param $data
      * @return mixed|string
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Exception
      */
     public function createCname($cdnResourceId, $data = array())
     {
@@ -47,7 +47,7 @@ class CdnResource implements CdnResourceInterface
      * @param $cdnResourceId
      * @param $data
      * @return mixed|string
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Exception
      */
     public function enableDatacenters($cdnResourceId, $data)
     {
@@ -58,7 +58,7 @@ class CdnResource implements CdnResourceInterface
      * Get your http CDN resource details.
      * @param $cdnResourceId
      * @return mixed|string
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Exception
      */
     public function getDetail($cdnResourceId)
     {
@@ -70,7 +70,7 @@ class CdnResource implements CdnResourceInterface
      * @param $cdnResourceId
      * @param array $data
      * @return mixed|string
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Exception
      */
     public function edit($cdnResourceId, $data = array())
     {
@@ -81,7 +81,7 @@ class CdnResource implements CdnResourceInterface
      * Delete your CDN resource.
      * @param $cdnResourceId
      * @return mixed|string
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Exception
      */
     public function delete($cdnResourceId)
     {
@@ -90,7 +90,8 @@ class CdnResource implements CdnResourceInterface
 
     /**
      * List your CDN resource details.
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @return mixed|string
+     * @throws \Exception
      */
     public function getList()
     {
@@ -101,7 +102,7 @@ class CdnResource implements CdnResourceInterface
      * List of CNAMEs
      * @param $cdnResourceId
      * @return mixed|string
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Exception
      */
     public function getListCnames($cdnResourceId)
     {
@@ -112,7 +113,7 @@ class CdnResource implements CdnResourceInterface
      * List of Datacenters
      * @param $cdnResourceId
      * @return mixed|string
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Exception
      */
     public function getListDatacenter($cdnResourceId)
     {

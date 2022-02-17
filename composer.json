@@ -3,9 +3,9 @@
     "description": "API client for CDN77.com",
     "type": "library",
     "require": {
-        "php": ">=7.0",
+        "php": ">=5.4.0",
         "ext-json": "*",
-        "guzzlehttp/guzzle": "^6.3"
+        "guzzlehttp/guzzle": "^5.3"
     },
     "license": "MIT",
     "authors": [
@@ -18,7 +18,5 @@
         "psr-4": {
             "Mafikes\\Cdn77Api\\": "src/"
         }
-    },
-    "require-dev": {
     }
 }

@@ -15,7 +15,10 @@ class Client
     const API_URL = 'https://api.cdn77.com/v3/';
     private $token; // Generated Api Key
 
-    private $client; // Registered Guzzle client
+    /**
+     * @var GuzzleHttp\Client
+     */
+    private $client;
 
     /** @var Resources\CdnResource */
     public $cdnResource;
@@ -55,8 +58,7 @@ class Client
         }
 
         $this->client = new GuzzleHttp\Client([
-            'base_uri' => self::API_URL,
-            'timeout' => 2.0,
+            'base_url' => self::API_URL,
         ]);
 
         $this->jsonResponse = $jsonResponse;
@@ -95,18 +97,18 @@ class Client
      * @param array $bodyData
      * @param null $jsonResponse
      * @return mixed|string
-     * @throws GuzzleHttp\Exception\GuzzleException
      */
     public function askServer($method, $uri, $parameters = array(), $bodyData = array(), $jsonResponse = null)
     {
         // Add params if exist
         if(!is_null($parameters)) {
             $uri = $uri . '?' . http_build_query($parameters);
-        } 
+        }
 
         // Create request
         try {
-            $response = $this->client->request($method, $uri, $this->createHeader($bodyData));
+            $request = $this->client->createRequest($method, $uri, $this->createHeader($bodyData));
+            $response = $this->client->send($request);
         } catch (GuzzleHttp\Exception\RequestException $e) {
             throw new \Exception($e->getResponse()->getBody());
         }
@@ -116,21 +118,13 @@ class Client
             throw new \Exception('Exception: Request Error. Status: ' . $response->getStatusCode() . ' Body: ' . $response->getBody());
         }
 
-        $result = $response->getBody()->getContents();
+        $result = $response->getBody();
 
         if (!$this->jsonResponse || !is_null($jsonResponse) && $jsonResponse === false) {
             $result = json_decode($result);
         }
 
         return $result;
-    }
-
-    /**
-     * @return string
-     */
-    public function getLogin()
-    {
-        return $this->login;
     }
 
     /**

@@ -22,7 +22,7 @@ class OriginResource implements OriginInterface
     /**
      * List of Origins
      * @return mixed|string
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Exception
      */
     public function getList()
     {
@@ -33,7 +33,7 @@ class OriginResource implements OriginInterface
      * Create Your Origin
      * @param $data
      * @return mixed|string
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Exception
      */
     public function create($data)
     {
@@ -45,7 +45,7 @@ class OriginResource implements OriginInterface
      * Detail of Your Origin
      * @param $id
      * @return mixed|string
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Exception
      */
     public function getDetail($id)
     {
@@ -57,7 +57,7 @@ class OriginResource implements OriginInterface
      * @param $id
      * @param $data
      * @return mixed|string
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Exception
      */
     public function edit($id, $data)
     {
@@ -69,7 +69,7 @@ class OriginResource implements OriginInterface
      * Delete Origin
      * @param $id
      * @return mixed|string
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Exception
      */
     public function delete($id)
     {
@@ -80,7 +80,7 @@ class OriginResource implements OriginInterface
      * Create AWS Origin
      * @param $data
      * @return mixed|string
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Exception
      */
     public function createAwsOrigin($data)
     {
